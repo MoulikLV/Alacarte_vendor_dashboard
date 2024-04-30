@@ -253,3 +253,19 @@ box-shadow: 0px 0px 7px 1px rgba(0,0,0,0.75);
     text-align: center;
 }
 
+.registerHere{
+    color: rgb(103, 103, 254);
+    
+}
+
+.registerHere:hover{
+    cursor: pointer;
+    color: rgb(0, 0, 255);
+    text-decoration: underline;
+}
+
+.dontAccount{
+    font-size: smaller;
+    
+}
+

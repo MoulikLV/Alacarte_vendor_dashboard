@@ -18,7 +18,7 @@ import { LocalActivity, LocalBarTwoTone, LockClock } from '@mui/icons-material';
 
 
 
-const Login = ({welcomehandler,setShowlogout}) => {
+const Login = ({welcomehandler,setShowlogout,showRegisterhandler}) => {
 
  
 
@@ -156,7 +156,9 @@ const Login = ({welcomehandler,setShowlogout}) => {
           </Button>
           </Box>
         </Box>
+        <span className='dontAccount'>Don`t have an account? <span onClick={showRegisterhandler} className='registerHere'>Register here!</span></span>
       </Box>
+      
       </Container>
     
 );

@@ -194,7 +194,7 @@ const LandingPage = () => {
         <Navbar showLoginhandler={showLoginhandler} showRegisterhandler={showRegisterhandler}  showLogout={showLogout}  logoutHandler={logoutHandler} showfirmName={showfirmName}  />
       <div className="collectionSection">
       <Sidebar showFirmHandler={showFirmHandler} addproductHandler={addproductHandler} allProductsHandler={allProductsHandler} showAddfirmTitle={showAddfirmTitle} userdetailsHandler={userdetailsHandler}/>
-        {showLogin &&  <Login welcomehandler={welcomehandler} setShowlogout={setShowlogout} />}
+        {showLogin &&  <Login welcomehandler={welcomehandler} setShowlogout={setShowlogout} showRegisterhandler={showRegisterhandler}/>}
         {showRegister &&  <Register showLoginhandler={showLoginhandler} />}
         {showAddfirm && showLogout && <AddFirm addproductHandler={addproductHandler} setShowFirmName={setShowFirmName}/>}
         {showAddproduct &&  showLogout && <AddProduct/>}
