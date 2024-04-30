@@ -3,6 +3,7 @@ import { API_URL } from '../../Data/ApiPath'
 
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+import CircularProgress from '@mui/material/CircularProgress'; 
 
 
 import Box from '@mui/material/Box';
@@ -25,8 +26,11 @@ const Login = ({welcomehandler,setShowlogout}) => {
 
   const [password,setpassword]=useState('')
 
+  const [loading,setLoading]=useState(false)
+
   const loginHandler=async(e)=>{
     e.preventDefault()
+    setLoading(true)
     try {
       const response = await fetch(`${API_URL}/vendor/login`,{
         method:"POST",
@@ -62,6 +66,8 @@ const Login = ({welcomehandler,setShowlogout}) => {
                                                                  
       } catch (error) {
         // console.log("Please Add firm")      
+      }finally{
+        setLoading(false)
       }
 
       const vendorFirmId=vendorData.vendorFirmId
@@ -74,6 +80,7 @@ const Login = ({welcomehandler,setShowlogout}) => {
 
 
       if(response.ok){
+        
         console.log(data)
         alert('Login Success')
        
@@ -143,8 +150,9 @@ const Login = ({welcomehandler,setShowlogout}) => {
             onChange={(e) => setpassword(e.target.value)}
           />
           <Box textAlign='center'>
-          <Button   type="submit"  variant="contained" sx={{ mt: 2, mb: 2 }}>
-            Log In
+          <Button   type="submit"  variant="contained" sx={{ mt: 2, mb: 2 }} disabled={loading}>
+
+            {loading ? <CircularProgress size={24} color="primary"/> : 'Login'}
           </Button>
           </Box>
         </Box>
