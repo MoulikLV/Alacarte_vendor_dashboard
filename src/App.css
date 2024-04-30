@@ -1,0 +1,255 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Times New Roman', serif;
+    font-weight: 500;
+    font-size: large;
+}
+h5{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.navButtons:hover{
+    cursor: pointer;
+    color: rgb(57, 57, 71);
+
+}
+h3{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #776274
+}
+
+.sideButtons{
+     color: white;
+}
+
+.sideButtons:hover{
+    color: rgb(79, 68, 68);
+    cursor: pointer;
+    font-weight: 800;
+}
+
+.navSection{
+    
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(255, 95, 9);
+    color: white;
+    padding: 0 20px;
+    font-size: large;
+    
+    
+}
+
+.sideBarSection{
+    
+    width: 100%;
+    max-width: 15%;
+    height: 88vh;
+    background-color: rgb(113, 141, 158);
+    padding-top: 20px;
+}
+
+.sideBarSection ul li{
+    list-style: none;
+    margin-bottom: 25px;
+    font-weight: 500;
+    
+}
+
+.collectionSection{
+    display: flex;
+}
+
+.loginSection{
+    /* border: 1px solid red; */
+    width:  100%;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.registerSection{
+      /* border: 1px solid red; */
+    width:  100%;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.authForm{
+    width:  100%;
+    max-width: 50%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid gray;
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 0px 7px 1px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 0px 7px 1px rgba(0,0,0,0.75);
+box-shadow: 0px 0px 7px 1px rgba(0,0,0,0.75);
+}
+
+.authForm input{
+    width: 100%;
+    max-width: 55%;
+    border-radius: 4px;
+    height: 1.4rem;
+}
+
+.authForm label{
+    
+    width: 100%;
+    max-width: 55%;
+    font-weight: 500;
+}
+
+.btnSubmit  :hover{
+    cursor: pointer;
+}
+
+.firmSection{
+    /* border: 1px solid red; */
+    width:  100%;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.tableForm{
+    width:  100%;
+    max-width: 50%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px;
+    
+    border: 1px solid gray;
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 0px 7px 1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 7px 1px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 7px 1px rgba(0,0,0,0.75);
+}
+
+.tableForm label{
+    width: 100%;
+    max-width: 70%;
+    font-weight: 500;
+}
+
+.tableForm input{
+    width: 100%;
+    max-width: 70%;
+    border-radius: 4px;
+    height: 1.4rem;
+   
+}
+
+/* CHeckbox css */
+
+.check-inp{
+    display: flex;
+   
+    flex-direction: row;
+
+    width: 100%;
+    max-width: 70%;
+    /* border: 1px solid red; */
+    
+}
+
+/* .check-inp label{
+    width: 70%;
+} */
+
+.checkContainer{
+   
+    width:  100%;
+    max-width: 70%;
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    gap: 20px;
+    align-items: center;
+    /* padding-right: 90px; */
+    
+    
+}
+
+
+.check-inp{
+    gap: 70px;
+}
+
+.radioContainer{
+   display: flex;
+   flex-direction: row;
+}
+
+
+
+/* Products Table */
+
+.productsTable{
+    
+    margin-left: 70px;
+    margin-top: 30px;
+    border-collapse: collapse;
+    width: 70vw;
+}
+
+
+
+.productsTable th, .productsTable td {
+    border:  1px solid gray;
+   
+}
+
+.productsTable td {
+   text-align: center;
+   
+}
+
+.productsTable th {
+    background-color: rgb(219, 105, 105);
+    
+}
+
+.errorSection{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+}
+
+
+.userdetailstable th, .userdetailstable td{
+      border: 1px solid black;
+}
+
+.userdetailstable{
+     
+    margin-left: 70px;
+    margin-top: 30px;
+    border-collapse: collapse;
+    width: 70vw;
+}
+
+.userdetailstable td{
+    text-align: center;
+}
+
