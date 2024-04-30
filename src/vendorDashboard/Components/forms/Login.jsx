@@ -109,13 +109,14 @@ const Login = ({welcomehandler,setShowlogout}) => {
 
   return (
     
-      <Box sx={{ width:390, marginLeft:35, marginTop: 8, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <Container component="main" maxWidth="xl">
+        <Box textAlign='center' sx={{ width:390, marginLeft:35, marginTop: 8, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <LockOutlinedIcon sx={{ fontSize: 'large' }} />
         
         <Typography component="h5" variant="h5" fontSize='20px' >
           Vendor Login 
         </Typography>
-        <Box component="form" onSubmit={loginHandler} >
+        <Box component="form" onSubmit={loginHandler} textAlign='center' >
           <TextField
             margin="normal"
             required
@@ -148,6 +149,7 @@ const Login = ({welcomehandler,setShowlogout}) => {
           </Box>
         </Box>
       </Box>
+      </Container>
     
 );
 }
