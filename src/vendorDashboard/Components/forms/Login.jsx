@@ -109,8 +109,8 @@ const Login = ({welcomehandler,setShowlogout}) => {
 
   return (
     
-      <Container component="main" maxWidth="xl">
-        <Box textAlign='center' sx={{ width:390, marginLeft:35, marginTop: 8, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <Container component="main" maxWidth="xl" className='loginSection'>
+        <Box  textAlign='center' sx={{ marginTop: 8, display: 'flex', flexDirection: 'column', alignItems: 'center',width:'90%', maxWidth:'100vw' }}>
         <LockOutlinedIcon sx={{ fontSize: 'large' }} />
         
         <Typography component="h5" variant="h5" fontSize='20px' >
