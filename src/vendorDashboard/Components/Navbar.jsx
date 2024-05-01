@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-const Navbar = ({showLoginhandler,showRegisterhandler,showLogout,logoutHandler,showfirmName}) => {
+const Navbar = ({showLoginhandler,showRegisterhandler,logoutHandler,showfirmName,isLoggedIn}) => {
   return (
    
       <div className="navSection">
@@ -10,14 +10,14 @@ const Navbar = ({showLoginhandler,showRegisterhandler,showLogout,logoutHandler,s
            
         </div>
         <div >
-          <h5>Firmname : {showfirmName}</h5>
+          <h5>{showfirmName? `Firmname : ${showfirmName}` : " "} </h5>
         </div>
         
         
         
         
         <div className="userAuth">
-            {!showLogout ? <><span className='navButtons' onClick={showLoginhandler}>Login </span>/
+            { !isLoggedIn? <><span className='navButtons' onClick={showLoginhandler}>Login </span>/
             <span className='navButtons' onClick={showRegisterhandler}> Register</span> </>
              :  
             <span className='navButtons' onClick={logoutHandler}>  <i class="fa fa-sign-out"></i>Logout</span>}

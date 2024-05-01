@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Confetti from 'react-confetti';
 
-const WelcomePage = ({ username }) => {
+const WelcomePage = () => {
   const [showConfetti, setShowConfetti] = useState(false);
 
   // Show confetti animation when component mounts
@@ -16,9 +16,12 @@ const WelcomePage = ({ username }) => {
     return () => clearTimeout(timeout);
   }, []);
 
+  const userName=localStorage.getItem('userName')
+
+
   return (
     <div className="welcome-page">
-      <h3>Welcome, {username}!</h3>
+      <h3>Welcome, {userName}!</h3>
       {showConfetti && <Confetti  gravity={0.1}
           numberOfPieces={900}
           

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-
-import { Button } from "@mui/material";
+import MuiAlert from '@mui/material/Alert';
+import { Button, CircularProgress, Snackbar } from "@mui/material";
 import { API_URL } from "../../Data/ApiPath";
 
 const AddProduct = () => {
@@ -16,6 +16,22 @@ const AddProduct = () => {
   const [image,setImage]=useState(null)  
 
   const [bestSeller,setBestSeller]=useState(false)
+
+  const [snackAlert,setSnackALert]=useState(false)
+
+  const [snackMessage,setSnackMessage]=useState('')
+
+  const [snackSeverity,setSnackSeverity]=useState('success')
+
+  
+
+  const [loading,setLoading]=useState(false)
+
+  
+
+  const handleSnackAlert=()=>{
+    setSnackALert(false)
+  }
 
   const handleCategoryChange=(event)=>{
     const value = event.target.value;
@@ -40,6 +56,7 @@ const AddProduct = () => {
 
   const addProductHandler=async(e)=>{
     e.preventDefault()
+    setLoading(true)
 
     try {
 
@@ -71,7 +88,10 @@ const AddProduct = () => {
       // console.log(data)
 
       if(response.ok){
-        alert('Product added Succesfully')
+        
+        setSnackALert(true)
+        setSnackMessage('Product Added Succesfully')
+        setSnackSeverity('success')
         
         setProductName('')
         setPrice('')
@@ -82,12 +102,17 @@ const AddProduct = () => {
        
         
       }else{
-        alert('Failed to add Product')
+        setSnackALert(true)
+        setSnackMessage('Failed to add product')
+        setSnackSeverity('error')
+        
       }
 
     } catch (error) {
        console.error(error)
-       alert("Failed to add Product")
+       
+    }finally{
+      setLoading(false)
     }
 
 
@@ -142,9 +167,21 @@ const AddProduct = () => {
         <input type="file" name="image"  onChange={imageHandler}/>
         <br />
         <div className="btnSubmit">
-        <Button type="submit" variant="contained" color="success">Add Product</Button>
+        <Button type="submit" variant="contained" color="success">
+          {loading ? <CircularProgress size={24} color="primary"/> : "Add Product"}
+          </Button>
         </div>
       </form>
+      <Snackbar
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+        open={snackAlert}
+        autoHideDuration={4000}
+        onClose={handleSnackAlert}
+      >
+        <MuiAlert elevation={6} variant="filled" onClose={handleSnackAlert} severity={snackSeverity}>
+          {snackMessage}
+        </MuiAlert>
+      </Snackbar>
     </div>
   );
 };

@@ -9,204 +9,103 @@ import WelcomePage from './WelcomePage'
 import AllProducts from '../Components/AllProducts'
 import Userdetails from '../Components/forms/Userdetails'
 
+const formTypes={
+  welcome:'WELCOME',
+  addProduct:"ADD_PRODUCT",
+  allProducts:'ALL_PRODUCTS',
+  userDetails:"USER_DETAILS",
+  regsitrationForm:'REGISTRATION_FORM',
+  loginForm:"LOGIN_FORM",
+  addFirm:'ADD_FIRM'
+}
+
 const LandingPage = () => {
 
-   const [showLogin,setShowLogin]=useState(false)
-
-   const [showRegister,setShowregister]=useState(false)
-
-   const [showAddfirm,setShowAddfirm]=useState(false)
-
-   const [showAddproduct,setShowAddproduct]=useState(false)
-
-   const [showWelcomepage,setWelcomepage]=useState(false)
-
-   const [allProducts,setAllproducts]=useState(false)
-
-   const [username,setUsername]=useState('')
-
-   const [showLogout,setShowlogout]=useState(false)
-
-   const [showfirmName,setShowFirmName]=useState("")  
+  const [selectedForm,setSelectedForm]=useState(formTypes.welcome)
+  
+  const [isLoggedIn,setIsloggedIn]=useState(false)
    
-   const [showAddfirmTitle,setShowAddfirmTitle]=useState(true)
+  const [showfirmName,setShowFirmName]=useState("")  
+   
+  const [showAddfirmTitle,setShowAddfirmTitle]=useState(true)
 
-   const [showUserdetails,setshowUserdetails]=useState(false)
+  const logintoken=localStorage.getItem('loginToken')
 
-   useEffect(()=>{
-        const logintoken=localStorage.getItem('loginToken')
+    useEffect(()=>{
         if(logintoken){
-          setShowlogout(true)
-          setShowLogin(false)
-
-        }else{
-          setShowLogin(true)
-          
+          setIsloggedIn(true)
+      } else{
+          setSelectedForm(formTypes.loginForm)
         }
-   },[])  
 
-   useEffect(()=>{
-    const firmName=localStorage.getItem('vendorFirmName')
-    if(firmName){
-      setShowFirmName(firmName)
-      setShowAddfirmTitle(false)
-    }
+   },[logintoken])  
+
+    useEffect(()=>{
+      const firmName=localStorage.getItem('vendorFirmName')
+       if(firmName){
+         setShowFirmName(firmName)
+         setShowAddfirmTitle(false)
+      }
    })
 
-   const showLoginhandler=()=>{
-    setShowLogin(true)
-    setShowregister(false)
-    setShowAddfirm(false)
-    setShowAddproduct(false)
-    setWelcomepage(false)
-    setAllproducts(false)
-    setshowUserdetails(false)
+    const showLoginhandler=()=>{
+    setSelectedForm(formTypes.loginForm)   
    }
 
-   const logoutHandler=()=>{
-    const logoutConfirm= window.confirm("Are you sure to Logout?")
-    if(!logoutConfirm){
-      return
-    }
-    localStorage.removeItem('loginToken')
-    localStorage.removeItem('vendorFirmId')
-    localStorage.removeItem('vendorFirmName')
-    setShowlogout(false)
-    window.location.reload()
+    const showRegisterhandler=()=>{
+     setSelectedForm(formTypes.regsitrationForm)
    }
 
-   const showRegisterhandler=()=>{
-     setShowLogin(false)
-    setShowregister(true)
-    
-    setShowAddfirm(false)
-    setShowAddproduct(false)
-    setWelcomepage(false)
-    setAllproducts(false)
-    setshowUserdetails(false)
-   }
-
-   const showFirmHandler=()=>{
-    if(showLogout){
-    setShowAddfirm(true)
-    setShowLogin(false)
-    setShowregister(false)
-    setShowAddproduct(false)
-    setWelcomepage(false)
-    setAllproducts(false)
-    setshowUserdetails(false)
-    }else{
-      alert('Please login to add firm')
-      setShowLogin(true)
-      setShowregister(false)
-
-    }
-   }
-
-   const addproductHandler=()=>{
-   if(showLogout){
-    setShowAddproduct(true)
-    setShowregister(false)
-    setShowLogin(false)
-    setShowAddfirm(false)
-    setWelcomepage(false)
-    setAllproducts(false)
-    setshowUserdetails(false)
-   }else{
-    alert('Please Login to add products')
-    setShowLogin(true)
-    setShowregister(false)
-
-   }
-   }
-
-   const welcomehandler=(username)=>{
-    setShowAddproduct(false)
-    setShowregister(false)
-    setShowLogin(false)
-    setShowAddfirm(false)
-    setShowAddproduct(false)
-    setWelcomepage(true)
-    setUsername(username)
-    setAllproducts(false)
-    setshowUserdetails(false)
-
-    
-   }
-
-   const allProductsHandler=()=>{
-    if(showLogout){
-      setAllproducts(true)
-    setShowAddproduct(false)
-    setShowregister(false)
-    setShowLogin(false)
-    setShowAddfirm(false)
-    setWelcomepage(false)
-    setshowUserdetails(false)
-    }else{
-      alert('Please Login to see products')
-      setShowLogin(true)
-      setShowregister(false)
-    }
-   }
-
-   const userdetailsHandler=()=>{
-    
-     if(showLogout){
-      setAllproducts(false)
-      setShowAddproduct(false)
-      setShowregister(false)
-      setShowLogin(false)
-      setShowAddfirm(false)
-      setWelcomepage(false)
-      setshowUserdetails(true)
-     }else{
-      alert('Please login to see user details')
-      setShowLogin(true)
-      setShowregister(false)
+    const showFirmHandler=()=>{
+        setSelectedForm(formTypes.addFirm)
      }
    
+    const addProductHandler=()=>{
+        setSelectedForm(formTypes.addProduct)
    }
-
-  //  useEffect(()=>{
-    
-      
-  //     const loginToken=localStorage.getItem('loginToken')
-  //     if(loginToken){
-  //       setShowLogin(false)
-  //     }else{
-  //       setShowLogin(true)
-  //     }
-
-  //     // if(!showLogout){
-  //     //   setShowLogin(true)
-  //     // }else{
-  //     //   setShowLogin(false)
-  //     // }
-    
-  //  },[])
 
    
 
+   const allProductsHandler=()=>{
+       setSelectedForm(formTypes.allProducts)
+  }
+  
 
-  return (
-    <section className='landingsection'>
-        <Navbar showLoginhandler={showLoginhandler} showRegisterhandler={showRegisterhandler}  showLogout={showLogout}  logoutHandler={logoutHandler} showfirmName={showfirmName}  />
+   const userDetailsHandler=()=>{
+       setSelectedForm(formTypes.userDetails)
+  }
+     
+  const logoutHandler=()=>{
+      const logoutConfirm= window.confirm("Are you sure to Logout?")
+      if(!logoutConfirm){
+        return
+      }
+      localStorage.removeItem('loginToken')
+      localStorage.removeItem('vendorFirmId')
+      localStorage.removeItem('vendorFirmName')
+      localStorage.removeItem('vendorId')
+      localStorage.removeItem('userName')
+      setIsloggedIn(false)
+      window.location.reload()
+  }
+   
+   return (
+     <section className='landingsection'>
+        <Navbar showLoginhandler={showLoginhandler} showRegisterhandler={showRegisterhandler}  isLoggedIn={isLoggedIn}   logoutHandler={logoutHandler} showfirmName={showfirmName}  />
       <div className="collectionSection">
-      <Sidebar showFirmHandler={showFirmHandler} addproductHandler={addproductHandler} allProductsHandler={allProductsHandler} showAddfirmTitle={showAddfirmTitle} userdetailsHandler={userdetailsHandler}/>
-        {showLogin &&  <Login welcomehandler={welcomehandler} setShowlogout={setShowlogout} showRegisterhandler={showRegisterhandler}/>}
-        {showRegister &&  <Register showLoginhandler={showLoginhandler} />}
-        {showAddfirm && showLogout && <AddFirm addproductHandler={addproductHandler} setShowFirmName={setShowFirmName}/>}
-        {showAddproduct &&  showLogout && <AddProduct/>}
-        {showWelcomepage && <WelcomePage username={username}/>}
-        {allProducts && showLogout && <AllProducts/>}
-        {showUserdetails && showLogout && <Userdetails/>}
+      {isLoggedIn && <Sidebar showFirmHandler={showFirmHandler} addproductHandler={addProductHandler} allProductsHandler={allProductsHandler} showAddfirmTitle={showAddfirmTitle} userdetailsHandler={userDetailsHandler}/>}
+        {!isLoggedIn && selectedForm===formTypes.loginForm &&  <Login  showRegisterhandler={showRegisterhandler} setIsloggedIn={setIsloggedIn}/>}
+        {!isLoggedIn && selectedForm===formTypes.regsitrationForm &&  <Register showLoginhandler={showLoginhandler} />}
+        {selectedForm===formTypes.addFirm  && <AddFirm addproductHandler={addProductHandler} setShowFirmName={setShowFirmName}/>}
+        {selectedForm===formTypes.addProduct &&   <AddProduct/>}
+        {selectedForm===formTypes.welcome  && isLoggedIn && <WelcomePage/>}
+        {selectedForm===formTypes.allProducts && <AllProducts/>}
+        {selectedForm===formTypes.userDetails && <Userdetails/>}
         
       </div>
 
     </section>  
   )
 }
-
 
 export default LandingPage;
