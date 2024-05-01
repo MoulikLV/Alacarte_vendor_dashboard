@@ -34,6 +34,7 @@ const LandingPage = () => {
     useEffect(()=>{
         if(logintoken){
           setIsloggedIn(true)
+        
       } else{
           setSelectedForm(formTypes.loginForm)
         }
@@ -85,7 +86,7 @@ const LandingPage = () => {
       localStorage.removeItem('vendorFirmName')
       localStorage.removeItem('vendorId')
       localStorage.removeItem('userName')
-      setIsloggedIn(false)
+      
       window.location.reload()
   }
    
