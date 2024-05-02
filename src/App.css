@@ -8,6 +8,21 @@ body{
     font-weight: 500;
     font-size: large;
 }
+
+.alacarteLogo{
+    
+    width: 100px; 
+    height: auto; 
+    margin-right: 15px;
+    
+} 
+.navLogo{
+    display: flex;
+    
+    align-items: center;
+    
+}
+
 h5{
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
@@ -39,7 +54,8 @@ h3{
     justify-content: space-between;
     align-items: center;
     background-color: rgb(255, 95, 9);
-    color: white;
+   
+    color: rgb(255, 255, 255);
     padding: 0 20px;
     font-size: large;
     
@@ -73,6 +89,21 @@ h3{
     flex-direction: column;
     /* justify-content: center; */
     align-items: center;
+    
+}
+
+.landingsection{
+    /* background-image: url('https://media.istockphoto.com/id/584781318/photo/typographical-la-carte-quote-with-fork-and-knife.jpg?s=612x612&w=0&k=20&c=4prnKdWPbnMuA-GP2PIytDX9OC9j4djthGC3gxT5HpM=');
+    background-size: contain;
+    min-height: 100vh; Ensure the background covers the entire viewport height */
+    
+    /* justify-content: center; */
+    /* align-items: center; */
+   
+}
+
+.navSection{
+    
 }
 
 .registerSection{
