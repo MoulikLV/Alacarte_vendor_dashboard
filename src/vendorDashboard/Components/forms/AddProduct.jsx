@@ -123,14 +123,15 @@ const AddProduct = () => {
 
 
   return (
-    <div className="firmSection">
+    <div className="addProduct">
       <h3>Add Products</h3>
       <form className="tableForm" onSubmit={addProductHandler}>
-        <label>Product Name</label>
-        <input type="text" name="productName" value={productName} onChange={(e)=>setProductName(e.target.value)} />
+        
+        {/* <input type="text" name="productName" value={productName} onChange={(e)=>setProductName(e.target.value)} /> */}
+        <TextField fullWidth  type="text" name="productName" value={productName} onChange={(e)=>setProductName(e.target.value)} id="standard-basic" label="Product Name" variant="standard" />
         <br />
-        <label>Price</label>
-        <input type="text" name="price" value={price} onChange={(e)=>setPrice(e.target.value)} />
+        <TextField  fullWidth type="number" name="price" value={price} onChange={(e)=>setPrice(e.target.value)} id="standard-basic" label="Price" variant="standard" />
+       
         <br />
         {/* <label>category</label>
         <input type="text" /> */}
@@ -151,7 +152,7 @@ const AddProduct = () => {
        
         {/* <label>BestSeller</label>
         <input type="text" /> */}
-        <div className="check-inp">
+        <div className="check-inp" >
           <label>BestSeller:</label>
           <div className="radioContainer">
             <label>Yes</label>
@@ -163,11 +164,12 @@ const AddProduct = () => {
           </div>
         </div>
         <br />
-        <label>Description</label>
-        <input type="text" name="description" value={description} onChange={(e)=>setDescription(e.target.value)}/>
+        <TextField fullWidth  type="text" name="description" value={description} onChange={(e)=>setDescription(e.target.value)} id="standard-basic" label="Description" variant="standard" />
+       
         <br />
-        <label>Product Image</label>
+        <label>Product Image:&nbsp;
         <input type="file" name="image"  onChange={imageHandler}/>
+        </label>
         <br />
         <div className="btnSubmit">
         <Button type="submit" variant="contained" color="success">
@@ -272,6 +274,12 @@ const AddProduct = () => {
   //     </MuiAlert>
   //   </Snackbar>
   // </div>
+
+  /////////////////////////
+  //////////////////////////////
+
+ 
+
 
   );
 };
