@@ -54,6 +54,11 @@ const AddProduct = () => {
     const selectedImage= e.target.files[0]
     setImage(selectedImage)
   }
+
+  const handlePriceChange=(value)=>{
+    const sanitizedValue = value.replace(/[^0-9]/g, '');
+    setPrice(sanitizedValue);
+  }
  
  
 
@@ -130,7 +135,7 @@ const AddProduct = () => {
         {/* <input type="text" name="productName" value={productName} onChange={(e)=>setProductName(e.target.value)} /> */}
         <TextField fullWidth  type="text" name="productName" value={productName} onChange={(e)=>setProductName(e.target.value)} id="standard-basic" label="Product Name" variant="standard" />
         <br />
-        <TextField  fullWidth type="number" name="price" value={price} onChange={(e)=>setPrice(e.target.value)} id="standard-basic" label="Price" variant="standard" />
+        <TextField  fullWidth type="number" name="price" value={price} onChange={(e)=>handlePriceChange(e.target.value)} id="standard-basic" label="Price" variant="standard" />
        
         <br />
         {/* <label>category</label>
