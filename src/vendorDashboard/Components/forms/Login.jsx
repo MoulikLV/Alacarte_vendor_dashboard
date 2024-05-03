@@ -19,7 +19,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 
 
 
-const Login = ({showRegisterhandler,setIsloggedIn}) => {
+const Login = ({showRegisterhandler}) => {
 
  
 
@@ -133,7 +133,7 @@ const Login = ({showRegisterhandler,setIsloggedIn}) => {
 
   return (
     
-      <Container component="main" maxWidth="xl" className='loginSection'   >
+      <Container component="main" maxWidth="xl"    >
         <Box   textAlign='center' sx={{ marginTop: 8, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <LockOutlinedIcon sx={{ fontSize: 'large' }} />
         

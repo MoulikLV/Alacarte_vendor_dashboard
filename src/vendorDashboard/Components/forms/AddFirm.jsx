@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { API_URL } from "../../Data/ApiPath";
 import Button from '@mui/material/Button';
+import { CircularProgress, Snackbar } from "@mui/material";
+import MuiAlert from '@mui/material/Alert';
 
 const AddFirm = ({addproductHandler,setShowFirmName}) => {
  
@@ -15,6 +17,14 @@ const AddFirm = ({addproductHandler,setShowFirmName}) => {
   const [region,setRegion]=useState([])
   
   const [image,setImage]=useState(null)
+
+  const [loading,setLoading]=useState(false)
+
+  const [snackAlert,setSnackALert]=useState(false)
+
+  const [snackMessage,setSnackMessage]=useState('')
+
+  const [snackSeverity,setSnackSeverity]=useState('success')
 
   const handleCategoryChange=(event)=>{
       const value = event.target.value;
@@ -46,10 +56,14 @@ const imageHandler=(e)=>{
 
 }
 
-  const addFirmhandler=async(e)=>{
-    e.preventDefault()
+const handleSnackALert=()=>{
+  setSnackALert(false)
+}
 
-    try {
+ const addFirmhandler=async(e)=>{
+    e.preventDefault()
+    setLoading(true)
+   try {
        const loginToken= localStorage.getItem('loginToken')
 
        if(!loginToken){
@@ -101,8 +115,12 @@ const imageHandler=(e)=>{
 
        if(response.ok){
         console.log(data)
-        alert('Firm added Succesfully')
-        addproductHandler()
+        setSnackALert(true)
+        setSnackMessage('Firm Added Succesfully')
+        setSnackSeverity('success')
+        setTimeout(() => {
+          addproductHandler()
+        }, 2000);
         
         setFirmName('')
         setArea('')
@@ -113,9 +131,11 @@ const imageHandler=(e)=>{
        
 
        }else if(data.message=="Firm Already exists for this vendor"){
-        alert('Firm already exists')
+        
        }else{
-        alert('Failed to add Firm')
+        setSnackALert(true)
+        setSnackMessage('Failed in adding Firm')
+        setSnackSeverity('error')
        }
 
        
@@ -123,8 +143,12 @@ const imageHandler=(e)=>{
 
     } catch (error) {
       console.error(error)
-      alert('Failed in adding Firm, Please try Again')
+        setSnackALert(true)
+        setSnackMessage('Failed in adding Firm! Please try again later')
+        setSnackSeverity('error')
       
+    }finally{ 
+      setLoading(false)
     }
   }
 
@@ -188,9 +212,21 @@ const imageHandler=(e)=>{
     
         <br />
         <div className="btnSubmit">
-        <Button type="submit" variant="contained" color="success">Add Firm</Button>
+        <Button type="submit" variant="contained" color="success">
+         {loading ? <CircularProgress size={24} color="primary"/> : "Add Firm"}
+          </Button>
         </div>
       </form>
+      <Snackbar
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+        open={snackAlert}
+        autoHideDuration={4000}
+        onClose={handleSnackALert}
+      >
+        <MuiAlert elevation={6} variant="filled" onClose={handleSnackALert} severity={snackSeverity}>
+          {snackMessage}
+        </MuiAlert>
+      </Snackbar>
     </div>
   );
 };

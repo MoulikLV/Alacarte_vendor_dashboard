@@ -91,12 +91,13 @@ const LandingPage = () => {
   }
    
    return (
+    <>
      <section className='landingsection'>
         <Navbar showLoginhandler={showLoginhandler} showRegisterhandler={showRegisterhandler}  isLoggedIn={isLoggedIn}   logoutHandler={logoutHandler} showfirmName={showfirmName}  />
       <div className="collectionSection">
       {isLoggedIn && <Sidebar showFirmHandler={showFirmHandler} addproductHandler={addProductHandler} allProductsHandler={allProductsHandler} showAddfirmTitle={showAddfirmTitle} userdetailsHandler={userDetailsHandler}/>}
         {!isLoggedIn && selectedForm===formTypes.loginForm &&  <Login  showRegisterhandler={showRegisterhandler} setIsloggedIn={setIsloggedIn}/>}
-        {!isLoggedIn && selectedForm===formTypes.regsitrationForm &&  <Register showLoginhandler={showLoginhandler} />}
+        {!isLoggedIn && selectedForm===formTypes.regsitrationForm &&  <Register showLoginhandler={showLoginhandler}  />}
         {selectedForm===formTypes.addFirm  && <AddFirm addproductHandler={addProductHandler} setShowFirmName={setShowFirmName}/>}
         {selectedForm===formTypes.addProduct &&   <AddProduct/>}
         {selectedForm===formTypes.welcome  && isLoggedIn && <WelcomePage/>}
@@ -106,6 +107,17 @@ const LandingPage = () => {
       </div>
 
     </section>  
+    <div>
+      <footer style={{fontFamily:"sans-serif"}} className='footer'>
+       <center>
+        <p style={{fontSize:'11px'}}>Created By <b>Moulik LV</b></p>
+       <p style={{fontSize:'11px'}}>&copy; All rights reserved 2024</p> 
+         <p style={{fontSize:'11px'}}>Contact : saimoulik05bunny@gmail.com</p>
+       </center>
+       
+      </footer>
+    </div>
+  </>
   )
 }
 

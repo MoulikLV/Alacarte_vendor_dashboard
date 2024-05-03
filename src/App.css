@@ -9,6 +9,7 @@ body{
     font-size: large;
 }
 
+
 .alacarteLogo{
     
     width: 100px; 
@@ -82,66 +83,29 @@ h3{
     display: flex;
 }
 
-.loginSection{
-    /* border: 1px solid red; */
-    width:  100%;
-    display: flex;
-    flex-direction: column;
-    /* justify-content: center; */
-    align-items: center;
-    
+.registerInput{
+    max-width: 490px;
 }
 
-.landingsection{
-    /* background-image: url('https://media.istockphoto.com/id/584781318/photo/typographical-la-carte-quote-with-fork-and-knife.jpg?s=612x612&w=0&k=20&c=4prnKdWPbnMuA-GP2PIytDX9OC9j4djthGC3gxT5HpM=');
-    background-size: contain;
-    min-height: 100vh; Ensure the background covers the entire viewport height */
+.registerBox{
+    margin-top: 50px;
+    width: 100%;
     
-    /* justify-content: center; */
-    /* align-items: center; */
    
-}
-
-.navSection{
+    
     
 }
 
-.registerSection{
-      /* border: 1px solid red; */
-    width:  100%;
+
+
+
+.haveAccount{
     display: flex;
-    flex-direction: column;
-    /* justify-content: center; */
-    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+    font-size: smaller
 }
 
-.authForm{
-    width:  100%;
-    max-width: 50%;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: 1px solid gray;
-    border-radius: 10px;
-    -webkit-box-shadow: 0px 0px 7px 1px rgba(0,0,0,0.75);
--moz-box-shadow: 0px 0px 7px 1px rgba(0,0,0,0.75);
-box-shadow: 0px 0px 7px 1px rgba(0,0,0,0.75);
-}
-
-.authForm input{
-    width: 100%;
-    max-width: 55%;
-    border-radius: 4px;
-    height: 1.4rem;
-}
-
-.authForm label{
-    
-    width: 100%;
-    max-width: 55%;
-    font-weight: 500;
-}
 
 .btnSubmit  :hover{
     cursor: pointer;
@@ -195,13 +159,10 @@ box-shadow: 0px 0px 7px 1px rgba(0,0,0,0.75);
 
     width: 100%;
     max-width: 70%;
-    /* border: 1px solid red; */
+    
     
 }
 
-/* .check-inp label{
-    width: 70%;
-} */
 
 .checkContainer{
    
@@ -212,7 +173,7 @@ box-shadow: 0px 0px 7px 1px rgba(0,0,0,0.75);
     justify-content:center;
     gap: 20px;
     align-items: center;
-    /* padding-right: 90px; */
+   
     
     
 }
@@ -295,8 +256,26 @@ box-shadow: 0px 0px 7px 1px rgba(0,0,0,0.75);
     text-decoration: underline;
 }
 
-.dontAccount{
+.dontAccount, .haveAccount{
     font-size: smaller;
+    
+}
+
+.landingsection{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.footer{
+  
+    width: 100%;
+    display: flex;
+   
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(221, 220, 220);
+    height: 15vh;
     
 }
 
