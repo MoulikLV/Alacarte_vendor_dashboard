@@ -59,6 +59,8 @@ const AddProduct = () => {
     const sanitizedValue = value.replace(/[^0-9]/g, '');
     setPrice(sanitizedValue);
   }
+
+  
  
  
 

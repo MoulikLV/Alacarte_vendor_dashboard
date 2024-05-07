@@ -14,7 +14,7 @@ const AllProducts = () => {
         if(!firmId){
           
           setLoading(false)
-          alert('Login to see products')
+          
           return
                       
          
@@ -38,7 +38,7 @@ const AllProducts = () => {
 
     useEffect(()=>{
         allProductHandler()
-        console.log('This is useEffect')
+        
     },[])
 
 
