@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { API_URL } from '../Data/ApiPath'
 import Button from '@mui/material/Button';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
 
 
 const AllProducts = () => {
@@ -8,6 +10,16 @@ const AllProducts = () => {
     const [products,setProducts]=useState([])
 
     const [loading,setLoading]=useState(true)
+
+    const [snackAlert,setSnackALert]=useState(false)
+
+    const [snackMessage,setSnackMessage]=useState('')
+  
+    const [snackSeverity,setSnackSeverity]=useState('success')
+
+    const handleSnackAlert=()=>{
+      setSnackALert(false)
+    }
 
     const allProductHandler=async()=>{
         const firmId=localStorage.getItem('vendorFirmId')
@@ -53,20 +65,28 @@ const AllProducts = () => {
         })
 
         if(response.ok){
-          
+          setSnackALert(true)
+           setSnackMessage('Product Deleted Succesfully')
+           setSnackSeverity('success')
           setProducts(products.filter(product=>product._id!== productId))
          
          
         }
         else{
-          alert('Product Deletion Failed')
+         
+          setSnackALert(true)
+          setSnackMessage('Product Deletion Failed')
+          setSnackSeverity('error')
         }
         
 
 
       } catch (error) {
         console.error(error)
-        alert('Product Deletion Failed')
+        setSnackALert(true)
+        setSnackMessage('Product Deletion Failed')
+        setSnackSeverity('error')
+        
        
         
       }
@@ -76,7 +96,8 @@ const AllProducts = () => {
     }
   return (
     
-      <div className="all-products-container" style={{maxHeight: '500px',  overflowY: 'auto' }}> 
+      <>
+       <div className="all-products-container" style={{maxHeight: '500px',  overflowY: 'auto' }}> 
       <center><h3>Your Items</h3></center>
       {!products? (<p>No Products</p>
       ) : (
@@ -99,17 +120,27 @@ const AllProducts = () => {
                         <td>{item.productName}</td>
                         <td>{item.price}</td>
                         <td>{item.image && <img style={{height:"50px",width:"60px"}} src={`${API_URL}/uploads/${item.image}`} alt={item.productName}/>}</td>
-                        <td> <Button onClick={()=>deleteProductById(item._id)} size="small" color="error">
-          Delete
-        </Button> </td>
+                        <td> <Button onClick={()=>deleteProductById(item._id)} size="small" color="error">Delete</Button></td>
                       </tr>
                       </>
                     )
                   })}
                 </tbody>
             </table>
+         
       )}
     </div>
+    <Snackbar
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+        open={snackAlert}
+        autoHideDuration={4000}
+        onClose={handleSnackAlert}
+      >
+        <MuiAlert elevation={6} variant="filled" onClose={handleSnackAlert} severity={snackSeverity}>
+          {snackMessage}
+        </MuiAlert>
+      </Snackbar>
+      </>
   
   )
 }
